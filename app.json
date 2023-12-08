@@ -1,4 +1,16 @@
 {
+  "colors": {
+    "primaryColor": "#5E49FF",
+    "greenWaterColor": "#25CBD3",
+    "green": "#25CBD3",
+    "lightBlueColor": "#F0F5FF",
+    "whiteColor": "#FFFFFF",
+    "grayColor00": "#F4F4F4",
+    "grayColor01": "#DADADA",
+    "grayColor02": "#7C7786",
+    "grayColor03": "#4D4C4D",
+    "grayColor04": "#333333"
+  },
   "expo": {
     "name": "rede_social_react_native",
     "slug": "rede_social_react_native",
@@ -7,7 +19,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,6 +37,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O aplicativo RedeSocial, deseja ter acesso a galeria do seu dispositivo."
+        }
+      ]
+    ]
   }
 }
