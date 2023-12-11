@@ -1,12 +1,13 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Botao from '../../../src/_componetes/Botao';
 import Input from '../../../src/_componetes/Input';
 import { useState } from 'react';
-import UploadImagem from '../../../src/UploadImagem';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../_rotas/RootStackParams';
+import * as UserService from '../../_services/UserService';
+import comunStyles from '../../comumStyles';
 
 const Login = () => {
   type navigationTypes = NativeStackNavigationProp<RootStackParamList, 'Login'>
@@ -14,10 +15,29 @@ const Login = () => {
 
   const [email, setEmail] = useState<string>('')
   const [senha, setSenha] = useState<string>('')
+  const [erro, setErro] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const efetuarLogin = async () => {  /*para efetuar o login*/
+    try{
+      setLoading(true)
+      await UserService.login({login: email, senha: senha})
+      setLoading(false)
+      navigation.navigate('Home')  /*navigation.navigate('') é a rora para onde vai ir a pagina*/
+    } catch(error: any){
+      console.log(error)
+      setErro('Erro ao efetuar o Login, tente novamnete.')
+      setLoading(false)
+    }
+  }
 
   return (
     <View style={styles.container}>
+
       <Image style={styles.logo} source={require('../../_assets/imagens/Logo.png')}/>
+
+      {erro != '' && <Text style={comunStyles.textErro}>{erro}</Text>}
+
       <Input 
           onChange={(e: string) => setEmail(e)}
           placeholder={"Digite o seu email"}
@@ -31,7 +51,7 @@ const Login = () => {
           icone={require('../../_assets/imagens/key.png')}
           value={senha}/>          
 
-      <Botao  onPress={() => { } } placeholder="Login" loading={false} disabled={false}/>
+      <Botao onPress={() => efetuarLogin()} placeholder="Login" loading={loading} disabled={!email || !senha}/>
 
       <View style={styles.containerWithAccount}>
         <Text>Não possui uma conta?</Text>
