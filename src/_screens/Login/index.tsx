@@ -1,7 +1,7 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Botao from '../../../src/_componetes/Botao';
 import Input from '../../../src/_componetes/Input';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -18,6 +18,10 @@ const Login = () => {
   const [erro, setErro] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
+  useEffect(() => {
+    verifcarLogin()
+  },[])
+
   const efetuarLogin = async () => {  /*para efetuar o login*/
     try{
       setLoading(true)
@@ -30,6 +34,13 @@ const Login = () => {
       setLoading(false)
     }
   }
+
+  const verifcarLogin = useCallback(async () => {
+     const usuario = await UserService.getUsuarioAtual()
+      if(usuario?.token) {
+        navigation.navigate('Home')
+      }
+  }, [])
 
   return (
     <View style={styles.container}>

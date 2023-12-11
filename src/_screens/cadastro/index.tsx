@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {  Text, TouchableOpacity, View } from 'react-native';
 import Botao from '../../../src/_componetes/Botao';
 import Input from '../../../src/_componetes/Input';
 import { useEffect, useState } from 'react';
@@ -7,6 +7,7 @@ import styles from './styles';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../_rotas/RootStackParams';
 import { useNavigation } from '@react-navigation/native';
+import * as UserService from '../../_services/UserService';
 import comunStyles from '../../comumStyles';
 import { validarConfirmarSenha, validarEmail, validarNome, validarSenha } from '../../_utils/validador';
 
@@ -20,7 +21,34 @@ const Cadastro = () => {
   const [nome, setNome] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [senha, setSenha] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
   const [confirmarSenha, setConfirmarSenha] = useState<string>('')
+
+  const efetuarCadastro = async () => {  /*para efetuar o login*/
+  try{
+    setLoading(true)
+    const body = new FormData()
+    body.append('nome', nome)
+    body.append('email', email)
+    body.append('senha', senha)
+    if(imagem) {
+      const file: any = {
+        uri: imagem.uri,
+        type: `imagem/${imagem.uri.split('/').pop().split('.').pop()}`,
+        nome: imagem.uri.split('/').pop()
+      }
+      body.append("file", file)
+    }
+    await UserService.cadastro(body)
+    await UserService.login({login: email, senha: senha})
+    setLoading(false)
+    navigation.navigate('Home')  /*navigation.navigate('') é a rora para onde vai ir a pagina*/
+  } catch(error: any){
+    console.log(error)
+    setErro('Erro ao efetuar o cadastro, tente novamnete.')
+    setLoading(false)
+  }
+}
 
   const formIsValid = () => {
     const nomeValido = validarNome(nome)
@@ -79,7 +107,7 @@ const Cadastro = () => {
           icone={require('../../_assets/imagens/key.png')}
           value={confirmarSenha}/>          
 
-      <Botao onPress={() => { } } placeholder="Cadastrar" loading={false} disabled={erro != '' || nome == '' || email == '' || senha == '' || confirmarSenha == ""}/>
+      <Botao onPress={() => efetuarCadastro() } placeholder="Cadastrar" loading={loading} disabled={erro != '' || nome == '' || email == '' || senha == '' || confirmarSenha == ""}/>
 
       <View style={styles.containerWithOutAccount}>
         <Text>Já possui uma conta?</Text>

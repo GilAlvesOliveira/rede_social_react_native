@@ -17,7 +17,7 @@ export const api = async (endpoint: string, metodo: Method, body? : any, newHead
         headers['Authorization'] = 'Bearer ' + token
     }
 
-    console.log(`execeutando: ${URL}${endpoint}, metodo ${metodo}, body ${JSON.stringify(body)}, headers ${JSON.stringify(headers)}`)
+    console.log(`executando: ${URL}${endpoint}, metodo ${metodo}, body ${JSON.stringify(body)}, headers ${JSON.stringify(headers)}`)
 
     return instance.request({
         url: endpoint,
