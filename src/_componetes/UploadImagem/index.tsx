@@ -1,4 +1,4 @@
-import { Image, TouchableOpacity, View, Text } from "react-native";
+import { Image, TouchableOpacity, View} from "react-native";
 import * as selecionarImagem from 'expo-image-picker';
 import styles from "./styles";
 
@@ -26,7 +26,7 @@ const UploadImagem = (props: {
                 {props.imagem ? 
                 <Image style={styles.imagem} source={{uri: props.imagem.uri}}></Image>
                 :
-                <Image source={require('../_assets/imagens/Avatar_Foto.png')}></Image>
+                <Image source={require('../../_assets/imagens/Avatar_Foto.png')}></Image>
                 }
             </TouchableOpacity>                
         </View>

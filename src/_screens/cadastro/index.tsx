@@ -2,7 +2,7 @@ import {  Text, TouchableOpacity, View } from 'react-native';
 import Botao from '../../../src/_componetes/Botao';
 import Input from '../../../src/_componetes/Input';
 import { useEffect, useState } from 'react';
-import UploadImagem from '../../../src/UploadImagem';
+import UploadImagem from '../../_componetes/UploadImagem';
 import styles from './styles';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../_rotas/RootStackParams';
@@ -84,7 +84,7 @@ const Cadastro = () => {
       <Input 
           onChange={(e: string) => setNome(e)}
           placeholder={"Nome completo"}
-          icone={require('../../_assets/imagens/user.png')}
+          icone={require('../../_assets/imagens/usuarioAtivo.png')}
           value={nome}/>
           
       <Input 
