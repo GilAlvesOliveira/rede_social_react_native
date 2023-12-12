@@ -50,7 +50,7 @@ const Cadastro = () => {
   }
 }
 
-  const formIsValid = () => {
+  const formularioValido= () => {
     const nomeValido = validarNome(nome)
     const emailValido = validarEmail(email)
     const senhaValido = validarSenha(senha)
@@ -71,7 +71,7 @@ const Cadastro = () => {
 }
 
     useEffect(() => {
-      formIsValid()
+      formularioValido()
     }, [nome, email, senha, confirmarSenha])
 
   return (

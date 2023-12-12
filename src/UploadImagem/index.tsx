@@ -16,6 +16,7 @@ const UploadImagem = (props: {
         })
         if(!resultado.canceled){
             props.setImagem(resultado)
+            console.log(resultado)
         }
     }
 

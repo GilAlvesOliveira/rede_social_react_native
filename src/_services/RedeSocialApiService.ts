@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios, { Method } from "axios"
 
-const URL = 'https://devagram-node-next-js-sgm6.vercel.app/api'
+const URL = 'https://devagram-react-next-5ek7.vercel.app/api'
 
 const instance = axios.create({
     baseURL: URL,
@@ -27,11 +27,11 @@ export const api = async (endpoint: string, metodo: Method, body? : any, newHead
     })
 }
 
-const post = async (url: string, data: any, headers?: any) => {
+const post = async (url: string, data?: any, headers?: any) => {
     return api(url, "POST", data, headers)
 }
-const put = async (url: string, data: any, headers?: any) => {
-    return api(url, "PUT", data, headers) 
+const put = async (url: string, data?: any, headers?: any) => {
+    return api(url, "PUT", data, headers)
 }
 const get = async (url: string, headers?: any) => {
     return api(url, "GET", headers)
