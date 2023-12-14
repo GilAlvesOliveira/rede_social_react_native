@@ -1,14 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios, { Method } from "axios"
 
-const URL = 'https://devagram-react-next-kappa.vercel.app/api'
+const URL = 'https://redesocial-node-nextjs.vercel.app/api'
 
 const instance = axios.create({
     baseURL: URL,
     timeout: 30000
 })
 
-export const api = async (endpoint: string, metodo: Method, body? : any, newHeaders?: any) => {
+export const api = async (endpoint: string, method: Method, body? : any, newHeaders?: any) => {
     const token = await AsyncStorage.getItem('token')
 
     let headers: any = newHeaders? newHeaders: {'Content-type' : 'application/json'}
@@ -17,11 +17,11 @@ export const api = async (endpoint: string, metodo: Method, body? : any, newHead
         headers['Authorization'] = 'Bearer ' + token
     }
 
-    console.log(`executando: ${URL}${endpoint}, metodo ${metodo}, body ${JSON.stringify(body)}, headers ${JSON.stringify(headers)}`)
+    console.log(`executando: ${URL}${endpoint}, metodo ${method}, body ${JSON.stringify(body)}, headers ${JSON.stringify(headers)}`)
 
     return instance.request({
         url: endpoint,
-        method: metodo,
+        method: method,
         data: body? body : '',
         headers: headers
     })
