@@ -1,19 +1,19 @@
-import * as RedeSocialApaiService from '../RedeSocialApiService';
+import * as RedeSocialApiService from '../RedeSocialApiService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ILogin, IUsuario } from './types';
 
 const login = async (body: ILogin) => {
-    const {data} = await RedeSocialApaiService.post('/login', body) /*como ja tem abase pronta da url da api...so colocar a barra e a api requerida*/
+    const {data} = await RedeSocialApiService.post('/login', body) /*como ja tem abase pronta da url da api...so colocar a barra e a api requerida*/
     await AsyncStorage.setItem('token',  data.token)
     atualizarUsuarioAtual()
 }
 
 const cadastro = async (body: FormData) => {
-    await RedeSocialApaiService.post('/cadastro', body, {"content-Type": "Multipart/form-data"})
+    await RedeSocialApiService.post('/cadastro', body, {"content-Type": "Multipart/form-data"})
 }
 
 const atualizarUsuarioAtual = async () => {
-    const usuario = await RedeSocialApaiService.get('/usuario')
+    const usuario = await RedeSocialApiService.get('/usuario')
     await AsyncStorage.setItem('nome', usuario.data.nome)
     await AsyncStorage.setItem('email', usuario.data.email)
     await AsyncStorage.setItem('id', usuario.data._id)
@@ -33,7 +33,7 @@ const getUsuarioAtual = async () => {
 }
 
 const pesquisar = async (filtro: string) => {
-    return await RedeSocialApaiService.get(`/pesquisa?filtro=${filtro}`)
+    return await RedeSocialApiService.get(`/pesquisa?filtro=${filtro}`)
 }
 
 export {login, getUsuarioAtual, cadastro, pesquisar}
