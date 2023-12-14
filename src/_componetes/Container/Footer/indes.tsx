@@ -34,7 +34,7 @@ const Footer = (props: IFooter) => {
        <View style={styles.row}>
            {menu.map((botao, index) => (
                <TouchableOpacity onPress={botao.onPress} key={index}>
-                   <Image source={props.currentTab === botao.title ? botao.iconeAtivo : botao.icone}></Image>
+                   <Image source={props.guiaAtual === botao.title ? botao.iconeAtivo : botao.icone}></Image>
                </TouchableOpacity>
            ))}
        </View>

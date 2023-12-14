@@ -4,7 +4,7 @@ const {height} = Dimensions.get('screen')
 
 const styles = StyleSheet.create({
     textErro: {
-        fontFamily: 'Biennale.Regular',
+        fontFamily: 'biennale',
         fontSize: 14,
         fontWeight: '400',
         color: colors.primaryColor,

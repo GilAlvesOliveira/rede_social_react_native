@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: colors.whiteColor,
-        fontFamily: "Biennale.bold",
+        fontFamily: "biennale-bold",
         fontWeight: "600",
         fontSize: 16
     },

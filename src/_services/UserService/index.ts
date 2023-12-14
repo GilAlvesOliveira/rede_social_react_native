@@ -31,4 +31,9 @@ const getUsuarioAtual = async () => {
 
     return usuario
 }
-export {login, getUsuarioAtual, cadastro}
+
+const pesquisar = async (filtro: string) => {
+    return await RedeSocialApaiService.get(`/pesquisa?filtro=${filtro}`)
+}
+
+export {login, getUsuarioAtual, cadastro, pesquisar}

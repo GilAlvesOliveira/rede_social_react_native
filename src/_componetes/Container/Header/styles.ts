@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 16,
-        paddingVertical: 20,
+        paddingVertical: 10,
     },
     containerInputPesquisa: {
         flexDirection: 'row',
@@ -26,18 +26,18 @@ const styles = StyleSheet.create({
         borderRadius: 4
     },
     imagem: {
-        marginLeft: 9
+        marginHorizontal: 9
     },
     input: {
         width: width / 2.1,
         paddingHorizontal: 12,
-        fontFamily: 'Biennale.Regular',
+        fontFamily: 'biennale',
         color: colors.grayColor04
     },
     inputAtivo: {
         width: width /2.1,
         paddingHorizontal: 12,
-        fontFamily: 'Biennael.regular',
+        fontFamily: 'biennale',
         color: colors.primaryColor
     }
 

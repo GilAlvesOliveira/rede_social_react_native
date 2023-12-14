@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: colors.primaryColor,
         textDecorationLine: 'underline',
-        fontFamily: 'Biennale.bold'
+        fontFamily: 'biennale-bold'
     }
   });
 

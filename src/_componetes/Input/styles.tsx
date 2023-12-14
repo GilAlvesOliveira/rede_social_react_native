@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         fontSize: 14,
         fontWeight: "400",
-        fontFamily: "Biennale.Regular",
+        fontFamily: "biennale",
         color: colors.grayColor02
     },
     row: {

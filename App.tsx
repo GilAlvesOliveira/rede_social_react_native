@@ -5,8 +5,8 @@ import Rotas from './src/_rotas';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'Biennale.bold': require('./assets/fonts/Biennale.Bold.otf'),
-    'Biennale.Regular': require('./assets/fonts/Biennale.Regular.otf'),
+    'biennale-bold': require('./assets/fonts/Biennale-Bold.otf'),
+    'biennale': require('./assets/fonts/Biennale-Regular.otf'),
   });
   return (
     fontsLoaded ?

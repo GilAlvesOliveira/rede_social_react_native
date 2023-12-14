@@ -5,7 +5,7 @@ const Home = () => {
     return (
     <Container 
     headerProps={{default: true}}
-    footerProps={{currentTab: 'Home'}}>
+    footerProps={{guiaAtual: 'Home'}}>
         <Text>Home</Text>
     </Container>
     )
