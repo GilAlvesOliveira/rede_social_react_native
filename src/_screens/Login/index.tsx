@@ -29,7 +29,6 @@ const Login = () => {
       setLoading(false)
       navigation.navigate('Home')  /*navigation.navigate('') é a rora para onde vai ir a pagina*/
     } catch(error: any){
-      console.log(error)
       setErro('Erro ao efetuar o Login, tente novamnete.')
       setLoading(false)
     }

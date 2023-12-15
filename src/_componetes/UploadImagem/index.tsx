@@ -3,7 +3,7 @@ import * as selecionarImagem from 'expo-image-picker';
 import styles from "./styles";
 
 const UploadImagem = (props: {
-    setImagem: (imagem: selecionarImagem.ImagePickerResult | null) => void,
+    setImagem: (imagem: selecionarImagem.ImagePickerResult) => void,
     imagem: any
 }) => {
 
@@ -16,7 +16,6 @@ const UploadImagem = (props: {
         })
         if(!resultado.canceled){
             props.setImagem(resultado)
-            console.log(resultado)
         }
     }
 

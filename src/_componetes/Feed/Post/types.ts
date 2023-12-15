@@ -6,6 +6,6 @@ export interface IPost {
     usuario: IUsuario,
     imagem: string,
     descricao: string,
-    likes: number,
+    likes: string[],
     comentarios: IComentario[]
 }
