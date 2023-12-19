@@ -8,6 +8,7 @@ import { IUsuario } from "../../../_services/UserService/types";
 const Post = (props: {post: IPost}) => {
     const [curtido, setCurtido] = useState<boolean>(false)
     const [comentado, setComentado] = useState<boolean>(false)
+    const [numeroDeLinhas, setNumeroDeLinhas] = useState<number | undefined>(2)
     const [usuarioLogado, setUsuarioLogado] = useState<IUsuario>()
 
     useEffect(() => {
@@ -58,6 +59,22 @@ const Post = (props: {post: IPost}) => {
                 </TouchableOpacity>
 
                 <Text style={styles.textCurtida}>Curtido por <Text style={[styles.textCurtida, styles.textCurtidaNegrito]}></Text>{props.post.likes.length} pessoas.</Text>
+            </View>
+
+            <View style={styles.containerDescricao}>
+                <View>
+                    <Text numberOfLines={numeroDeLinhas} style={styles.textDescricao} >
+                        <Text style={styles.textUsuarioNome}>
+                        {props.post.usuario.nome}
+                        </Text>
+                        {props.post.descricao} 
+                    </Text>
+                    <TouchableOpacity onPress={() => setNumeroDeLinhas(numeroDeLinhas ? undefined : 2)} >
+                        <Text style={styles.textMaisMenos} >
+                            {!numeroDeLinhas ? 'menos' : 'mais'}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     )

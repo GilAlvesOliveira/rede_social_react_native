@@ -46,6 +46,20 @@ const styles = StyleSheet.create({
     },
     icone: {
         marginLeft: 12
+    },
+    containerDescricao: {
+        marginTop:10,
+        marginHorizontal: 16,
+        flexDirection: 'row',
+    },
+    textDescricao: {
+        fontSize: 12,
+        fontFamily: 'biennale',
+        color: colors.grayColor04,
+        marginLeft: 12
+    },
+    textMaisMenos: {
+        color: colors.greenWaterColor
     }
 })
 
