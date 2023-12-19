@@ -56,10 +56,15 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'biennale',
         color: colors.grayColor04,
-        marginLeft: 12
+        width: width / 1.17
     },
     textMaisMenos: {
         color: colors.greenWaterColor
+    },
+    containerMaisMenos: {
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+        color: colors.grayColor04
     }
 })
 

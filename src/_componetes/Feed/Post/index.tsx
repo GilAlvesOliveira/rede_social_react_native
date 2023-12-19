@@ -4,6 +4,7 @@ import styles from "./styles";
 import { useEffect, useState } from "react";
 import { getUsuarioAtual } from "../../../_services/UserService";
 import { IUsuario } from "../../../_services/UserService/types";
+import Comentario from "../Comentarios";
 
 const Post = (props: {post: IPost}) => {
     const [curtido, setCurtido] = useState<boolean>(false)
@@ -62,20 +63,21 @@ const Post = (props: {post: IPost}) => {
             </View>
 
             <View style={styles.containerDescricao}>
-                <View>
                     <Text numberOfLines={numeroDeLinhas} style={styles.textDescricao} >
                         <Text style={styles.textUsuarioNome}>
                         {props.post.usuario.nome}
                         </Text>
-                        {props.post.descricao} 
+                        {'  ' + props.post.descricao} 
                     </Text>
-                    <TouchableOpacity onPress={() => setNumeroDeLinhas(numeroDeLinhas ? undefined : 2)} >
+                    {props.post.descricao.length > 90 &&
+                    <TouchableOpacity style={styles.containerMaisMenos} onPress={() => setNumeroDeLinhas(numeroDeLinhas ? undefined : 2)} >
                         <Text style={styles.textMaisMenos} >
                             {!numeroDeLinhas ? 'menos' : 'mais'}
                         </Text>
                     </TouchableOpacity>
-                </View>
+                    }
             </View>
+            <Comentario  comentario={props.post.comentarios}/>
         </View>
     )
 }
