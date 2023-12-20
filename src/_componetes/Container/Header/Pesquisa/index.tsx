@@ -50,7 +50,7 @@ const Pesquisar = (props: {filtro: string}) => {
         <TouchableOpacity style={usuario.index % 2 != 0? styles.backgroundImpar : styles.backgroundPar}>
             <View style={styles.row} >
                 <View>
-                    <Avatar imagem={usuario.avatar} />
+                    <Avatar usuario={usuario} />
                 </View>
                 <View>
                     <Text style={styles.nome} >{usuario.nome}</Text>

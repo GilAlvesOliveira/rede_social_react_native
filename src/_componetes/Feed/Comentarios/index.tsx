@@ -46,7 +46,7 @@ const Comentario = (props: IComentarioComponente) => {
 
                 {props.comentarioInputAtivo && 
                     <View style={styles.containerInputComentario}>
-                        <Avatar imagem={props.usuarioLogado.avatar}/>
+                        <Avatar usuario={props.usuarioLogado}/>
 
                         <TextInput 
                             placeholder="Adicione um comentario"
