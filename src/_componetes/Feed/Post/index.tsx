@@ -6,6 +6,8 @@ import { getUsuarioAtual } from "../../../_services/UserService";
 import { IUsuario } from "../../../_services/UserService/types";
 import Comentario from "../Comentarios";
 import Avatar from "../../Avatar";
+import * as FeedService from '../../../_services/FeedService'
+
 
 const Post = (props: {post: IPost}) => {
     const [curtido, setCurtido] = useState<boolean>(false)
@@ -16,10 +18,12 @@ const Post = (props: {post: IPost}) => {
 
     useEffect(() => {
         verificarCurtida()
+        verificarComentario()
     }, [])
 
     const AlternarCurtida = async () => {
         setCurtido(!curtido)
+        await FeedService.alternarCurtida(props.post.id)
     }
 
     const verificarCurtida = async () => {
@@ -29,6 +33,14 @@ const Post = (props: {post: IPost}) => {
             setCurtido(props.post.likes.includes(user.id))
         }
     }
+    const verificarComentario = async () => {
+        const user = await getUsuarioAtual()
+        setUsuarioLogado(user)
+        if (user.id) {
+            setComentado(props.post.comentarios.find(menssagem => menssagem.usuarioId == user.id) ? true : false)
+        }
+    }
+
 
     return (
         <View style={styles.container}>
@@ -51,8 +63,9 @@ const Post = (props: {post: IPost}) => {
                 <TouchableOpacity onPress={() => setComentarioInputAtivo(!comentarioInputAtivo)} >
                     <Image
                     style={styles.icone}
-                    source={comentado ? require('../../../_assets/imagens/comentado.png')
-                    : require('../../../_assets/imagens/naoComentado.png')} />
+                    source={comentado || comentarioInputAtivo?
+                        require('../../../_assets/imagens/comentado.png')
+                        : require('../../../_assets/imagens/naoComentado.png')} />
                 </TouchableOpacity>
 
                 <Text style={styles.textCurtida}>Curtido por <Text style={[styles.textCurtida, styles.textCurtidaNegrito]}></Text>{props.post.likes.length} pessoas.</Text>

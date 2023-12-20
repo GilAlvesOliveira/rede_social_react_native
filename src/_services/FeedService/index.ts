@@ -8,4 +8,8 @@ const getPosts = async (id?: string) => {
     return await RedeSocialApiService.get(url)
 }
 
-export {getPosts}
+const alternarCurtida = async (postId: string) => {
+    return await RedeSocialApiService.put(`/like?id=${postId}`)
+}
+
+export {getPosts, alternarCurtida}

@@ -1,4 +1,4 @@
-import { FlatList, View } from "react-native";
+import { Alert, FlatList, View } from "react-native";
 import { IUsuarioData } from "../../_services/UserService/types";
 import { useEffect, useState } from "react";
 import * as FeedService from '../../_services/FeedService'
@@ -57,7 +57,8 @@ const Feed = (props: {feedPerfil?: boolean, perfil?: IUsuarioData}) => {
                 setEstaCarregando(false)
             }catch(erro: any) {
                 setEstaCarregando(false)
-                
+                console.log(erro)
+                Alert.alert("Erro", "Erro ao carregar os dados do feed.")
             }
         }
     }

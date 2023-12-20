@@ -21,8 +21,15 @@ const styles =  StyleSheet.create({
     containerInputComentario: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginHorizontal: 16,
         marginTop: 8
+    },
+    inputComentario: {
+        color: colors.grayColor02,
+        width: width/1.6,
+        height: height/22,
+        paddingHorizontal: 8,
+        fontFamily: 'biennale-bold',
+        fontSize: 12
     }
 })
 

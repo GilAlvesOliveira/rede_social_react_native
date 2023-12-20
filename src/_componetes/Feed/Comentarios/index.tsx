@@ -33,6 +33,7 @@ const Comentario = (props: {comentario: IComentario[], comentarioInputAtivo: boo
                         <TextInput 
                             placeholder="Adicione um comentario"
                             value={comentario}
+                            style={styles.inputComentario}
                             onChangeText={value => setComentario(value)}
                             onSubmitEditing={onComentario}
                             autoCapitalize="none"
