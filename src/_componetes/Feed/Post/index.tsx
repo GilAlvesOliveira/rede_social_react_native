@@ -26,7 +26,7 @@ const Post = (props: {post: IPost}) => {
         setCurtido(!curtido)
         try {
             await FeedService.alternarCurtida(props.post.id)
-            if(curtidas) {
+            if(curtido) {
                 setCurtidas(curtidas - 1)
             } else {
                 setCurtidas(curtidas + 1)
