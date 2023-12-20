@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { getUsuarioAtual } from "../../../_services/UserService";
 import { IUsuario } from "../../../_services/UserService/types";
 import Comentario from "../Comentarios";
+import Avatar from "../../Avatar";
 
 const Post = (props: {post: IPost}) => {
     const [curtido, setCurtido] = useState<boolean>(false)
     const [comentado, setComentado] = useState<boolean>(false)
+    const [comentarioInputAtivo, setComentarioInputAtivo] = useState<boolean>(false)
     const [numeroDeLinhas, setNumeroDeLinhas] = useState<number | undefined>(2)
     const [usuarioLogado, setUsuarioLogado] = useState<IUsuario>()
 
@@ -31,14 +33,8 @@ const Post = (props: {post: IPost}) => {
     return (
         <View style={styles.container}>
             <View style={styles.containerUsuario}>
-                <TouchableOpacity >
-                    <Image
-                    style={styles.imagemUsuario}
-                    source={props.post.usuario.avatar ? 
-                    {uri: props.post.usuario.avatar} : 
-                    require('../../../_assets/imagens/Avatar.png')} />
-                </TouchableOpacity>
-                    <Text style={styles.textUsuarioNome} >{props.post.usuario.nome}</Text>
+                <Avatar imagem={props.post.usuario.avatar} />
+                <Text style={styles.textUsuarioNome} >{props.post.usuario.nome}</Text>
             </View>
             <View>
                 <Image style={styles.postImagem} source={{uri: props.post.imagem}} />
@@ -52,7 +48,7 @@ const Post = (props: {post: IPost}) => {
                     : require('../../../_assets/imagens/naoCurtido.png')} />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => setComentarioInputAtivo(!comentarioInputAtivo)} >
                     <Image
                     style={styles.icone}
                     source={comentado ? require('../../../_assets/imagens/comentado.png')
@@ -77,7 +73,10 @@ const Post = (props: {post: IPost}) => {
                     </TouchableOpacity>
                     }
             </View>
-            <Comentario  comentario={props.post.comentarios}/>
+            {
+                usuarioLogado && 
+            <Comentario usuarioLogado={usuarioLogado} comentarioInputAtivo={comentarioInputAtivo} comentario={props.post.comentarios}/>
+            }
         </View>
     )
 }

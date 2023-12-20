@@ -45,7 +45,7 @@ const Feed = (props: {feedPerfil?: boolean, perfil?: IUsuarioData}) => {
                         comentarios: post.comentarios.map((c: any) => {
                             return {
                                 nome: c.nome,
-                                mensagem: c.comentario,
+                                menssagem: c.comentario,
                                 usuarioId: c.usuarioId
                             }
                         }),

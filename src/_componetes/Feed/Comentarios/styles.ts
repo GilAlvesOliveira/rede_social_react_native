@@ -12,11 +12,17 @@ const styles =  StyleSheet.create({
         marginTop: 8
     },
     textNome:{
-        fontFamily: 'biennale',
+        fontFamily: 'biennale-bold',
         fontSize: 12,
     },
     textomentario:{
         fontSize:12
+    },
+    containerInputComentario: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginHorizontal: 16,
+        marginTop: 8
     }
 })
 

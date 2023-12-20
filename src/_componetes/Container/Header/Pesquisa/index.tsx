@@ -5,6 +5,7 @@ import * as UserService from '../../../../_services/UserService';
 import { ActivityIndicator } from "react-native";
 import { colors } from  '../../../../../app.json';
 import styles from "./styles";
+import Avatar from "../../../Avatar";
 
 const Pesquisar = (props: {filtro: string}) => {
     const[usuarios, setUsuarios] = useState<IUsuarioData[]>([])
@@ -49,10 +50,7 @@ const Pesquisar = (props: {filtro: string}) => {
         <TouchableOpacity style={usuario.index % 2 != 0? styles.backgroundImpar : styles.backgroundPar}>
             <View style={styles.row} >
                 <View>
-                    <Image 
-                        style={styles.imagemUsuario}
-                        source={usuario.avatar? {uri: usuario.avatar} : require('../../../../_assets/imagens/Avatar.png')} 
-                    />
+                    <Avatar imagem={usuario.avatar} />
                 </View>
                 <View>
                     <Text style={styles.nome} >{usuario.nome}</Text>
