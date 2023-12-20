@@ -1,4 +1,4 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 import { IPost } from "./types";
 import styles from "./styles";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import * as FeedService from '../../../_services/FeedService'
 
 const Post = (props: {post: IPost}) => {
     const [curtido, setCurtido] = useState<boolean>(false)
+    const [curtidas, setCurtidas] = useState<number>(props.post.likes.length)
     const [comentado, setComentado] = useState<boolean>(false)
     const [comentarioInputAtivo, setComentarioInputAtivo] = useState<boolean>(false)
     const [numeroDeLinhas, setNumeroDeLinhas] = useState<number | undefined>(2)
@@ -23,7 +24,17 @@ const Post = (props: {post: IPost}) => {
 
     const AlternarCurtida = async () => {
         setCurtido(!curtido)
-        await FeedService.alternarCurtida(props.post.id)
+        try {
+            await FeedService.alternarCurtida(props.post.id)
+            if(curtidas) {
+                setCurtidas(curtidas - 1)
+            } else {
+                setCurtidas(curtidas + 1)
+            }
+        } catch (erro: any) {
+            console.log(erro)
+            Alert.alert("Erro", "Erro ao efetuar a curtida")
+        }
     }
 
     const verificarCurtida = async () => {
@@ -68,7 +79,7 @@ const Post = (props: {post: IPost}) => {
                         : require('../../../_assets/imagens/naoComentado.png')} />
                 </TouchableOpacity>
 
-                <Text style={styles.textCurtida}>Curtido por <Text style={[styles.textCurtida, styles.textCurtidaNegrito]}></Text>{props.post.likes.length} pessoas.</Text>
+                <Text style={styles.textCurtida}>Curtido por <Text style={[styles.textCurtida, styles.textCurtidaNegrito]}></Text>{curtidas} pessoas.</Text>
             </View>
 
             <View style={styles.containerDescricao}>
@@ -88,7 +99,7 @@ const Post = (props: {post: IPost}) => {
             </View>
             {
                 usuarioLogado && 
-            <Comentario usuarioLogado={usuarioLogado} comentarioInputAtivo={comentarioInputAtivo} comentario={props.post.comentarios}/>
+            <Comentario idPost={props.post.id} usuarioLogado={usuarioLogado} comentarioInputAtivo={comentarioInputAtivo} comentarios={props.post.comentarios}/>
             }
         </View>
     )

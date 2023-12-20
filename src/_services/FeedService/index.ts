@@ -12,4 +12,8 @@ const alternarCurtida = async (postId: string) => {
     return await RedeSocialApiService.put(`/like?id=${postId}`)
 }
 
-export {getPosts, alternarCurtida}
+const enviarComentario =async (postId: string, menssagem: string) => {
+    return await RedeSocialApiService.put(`/comentario?id=${postId}`, {"comentario": menssagem})
+}
+
+export {getPosts, alternarCurtida, enviarComentario}
