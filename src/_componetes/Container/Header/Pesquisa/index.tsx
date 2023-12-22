@@ -47,7 +47,7 @@ const Pesquisar = (props: {filtro: string}) => {
     }, [usuarios])
 
     const renderItem = (usuario: IUsuarioData) => (
-        <TouchableOpacity style={usuario.index % 2 != 0? styles.backgroundImpar : styles.backgroundPar}>
+        <TouchableOpacity style={usuario.index && usuario.index % 2 != 0? styles.backgroundImpar : styles.backgroundPar}>
             <View style={styles.row} >
                 <View>
                     <Avatar usuario={usuario} />

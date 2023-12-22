@@ -35,5 +35,8 @@ const getUsuarioAtual = async () => {
 const pesquisar = async (filtro: string) => {
     return await RedeSocialApiService.get(`/pesquisa?filtro=${filtro}`)
 }
+const getPerfil = async (id: string) => {
+    return await RedeSocialApiService.get(`/pesquisa?id=${id}`)
+}
 
-export {login, getUsuarioAtual, cadastro, pesquisar}
+export {login, getUsuarioAtual, cadastro, pesquisar,getPerfil}
