@@ -36,8 +36,8 @@ const Feed = (props: {feedPerfil?: boolean, perfil?: IUsuarioData}) => {
                         imagem: post.foto,
                         descricao: post.descricao,
                         usuario: {
-                            nome: post.usuario.nome,
-                            avatar: post.usuario.avatar,
+                            nome: post?.usuario?.nome || props.perfil?.nome,
+                            avatar: post?.usuario?.avatar || post.ussuario.avatar,
                             id: post.usuario.idUsuario,
                             email: '',
                             token: '',
