@@ -12,9 +12,8 @@ const Container = (props: IContainer) => {
    return (
     <SafeAreaView style={styles.container}>
         <Header
-        perfilHeader={props.headerProps.perfilHeader}
+            perfilHeader={props.headerProps.perfilHeader}
             default={props.headerProps.default}
-            headerNovaPublicacao={props.headerProps.headerNovaPublicacao}
             barraPesquisa={{
                 value: filtro,
                 onChange: (value: string) => setFiltro(value)

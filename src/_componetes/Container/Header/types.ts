@@ -1,14 +1,7 @@
 export interface IHeader{
     default?: boolean,
     barraPesquisa?: IBarraPesquisa
-    headerNovaPublicacao?: IHeaderNovaPublicacao
     perfilHeader?: IPerfilHeader
-}
-
-export interface IHeaderNovaPublicacao {
-    onPressCancelar: () => void
-    onPressContinuar: () => void
-    ContinueDefault: boolean
 }
 
 export interface IBarraPesquisa{
@@ -19,5 +12,4 @@ export interface IBarraPesquisa{
 export interface IPerfilHeader{
     usuarioNome: string,
     perfilExterno: boolean,
-
 }

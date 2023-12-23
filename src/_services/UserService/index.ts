@@ -39,4 +39,4 @@ const getPerfil = async (id: string) => {
     return await RedeSocialApiService.get(`/pesquisa?id=${id}`)
 }
 
-export {login, getUsuarioAtual, cadastro, pesquisar,getPerfil}
+export {login, getUsuarioAtual, cadastro, pesquisar, getPerfil}

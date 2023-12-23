@@ -41,7 +41,9 @@ const Header = (props: IHeader) => {
                         <Image source={require('../../../_assets/imagens/setaVoltar.png')} />
                     </TouchableOpacity>
                 }
+
                 <Text>{props.perfilHeader.usuarioNome}</Text>
+                
                 {!props.perfilHeader.perfilExterno && 
                     <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Image source={require('../../../_assets/imagens/log-out.png')} />
