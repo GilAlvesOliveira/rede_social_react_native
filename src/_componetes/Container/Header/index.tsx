@@ -5,11 +5,18 @@ import { colors } from '../../../../app.json';
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../_rotas/RootStackParams";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 const Header = (props: IHeader) => {
     type navigationTypes = NativeStackNavigationProp<RootStackParamList, 'Home'>
     const navigation = useNavigation<navigationTypes>()
+
+    const logout = async () => {
+        await AsyncStorage.removeItem('token')
+        navigation.navigate('Login')
+    }
+
    return (
     <View style={styles.container}>
         {
@@ -35,20 +42,24 @@ const Header = (props: IHeader) => {
 
         {
             props.perfilHeader && 
-            <View style={styles.row}>
-                {props.perfilHeader.perfilExterno && 
-                    <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Image source={require('../../../_assets/imagens/setaVoltar.png')} />
-                    </TouchableOpacity>
-                }
+            <View style={styles.containerPerfil}>
+                <View style={{marginHorizontal: 16}} >
+                    {props.perfilHeader.perfilExterno && 
+                        <TouchableOpacity onPress={() => navigation.goBack()} >
+                            <Image style={{alignItems: 'flex-start'}} source={require('../../../_assets/imagens/setaVoltar.png')} />
+                        </TouchableOpacity>
+                    }
+                </View>
 
-                <Text>{props.perfilHeader.usuarioNome}</Text>
+                <Text style={styles.textNome} >{props.perfilHeader.usuarioNome}</Text>
                 
-                {!props.perfilHeader.perfilExterno && 
-                    <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Image source={require('../../../_assets/imagens/log-out.png')} />
-                    </TouchableOpacity>
-                }
+                <View style={{marginHorizontal: 16}} >
+                    {!props.perfilHeader.perfilExterno && 
+                        <TouchableOpacity onPress={() => logout()} >
+                            <Image source={require('../../../_assets/imagens/log-out.png')} />
+                        </TouchableOpacity>
+                    }
+                </View>
             </View>
         }
     </View>

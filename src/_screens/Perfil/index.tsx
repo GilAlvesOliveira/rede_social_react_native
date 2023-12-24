@@ -24,8 +24,14 @@ const Perfil = () => {
         try{
             const usuario = await UsuarioService.getUsuarioAtual()
             setUsuarioLogado(usuario)
+            var perfil 
             if(perfilParametro && perfilParametro.id) {
-                const perfil = await UsuarioService.getPerfil(perfilParametro.id)
+                 perfil = await UsuarioService.getPerfil(perfilParametro.id)  
+            } else if( usuario && usuario.id) {
+                perfil = await UsuarioService.getPerfil(usuario.id)
+            }
+
+            if (perfil) {
                 const perfilFormatado: IUsuarioData = {
                     id: perfil.data._id,
                     nome: perfil.data.nome,
@@ -37,8 +43,9 @@ const Perfil = () => {
                 }
                 setPerfil(perfilFormatado)
             }
+
         } catch(erro: any) {
-            Alert.alert("Erro", "Erro ao caregar dados do perfil")
+            Alert.alert("Erro", "Erro ao carregar dados do perfil")
             console.log("erro", erro)
         }
     }

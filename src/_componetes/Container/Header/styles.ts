@@ -39,6 +39,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         fontFamily: 'biennale',
         color: colors.primaryColor
+    },
+    containerPerfil: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row'
+    },
+    textNome: {
+        fontFamily: 'biennale-bold'
     }
 
 });
