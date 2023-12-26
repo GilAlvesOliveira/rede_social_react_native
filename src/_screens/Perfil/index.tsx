@@ -24,7 +24,7 @@ const Perfil = () => {
         try{
             const usuario = await UsuarioService.getUsuarioAtual()
             setUsuarioLogado(usuario)
-            var perfil 
+            let perfil 
             if(perfilParametro && perfilParametro.id) {
                  perfil = await UsuarioService.getPerfil(perfilParametro.id)  
             } else if( usuario && usuario.id) {
