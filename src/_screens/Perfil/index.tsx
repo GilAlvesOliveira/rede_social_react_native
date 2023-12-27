@@ -6,7 +6,8 @@ import { RootStackParamList } from '../../_rotas/RootStackParams';
 import * as UsuarioService from '../../_services/UserService'
 import { useEffect, useState } from 'react';
 import { IUsuario, IUsuarioData } from '../../_services/UserService/types';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
+import UsuarioInformacoes from '../../_componetes/UsuarioInformacoes';
 
 const Perfil = () => {
     type navigationTypes = NativeStackNavigationProp<RootStackParamList, 'Perfil'>
@@ -57,7 +58,12 @@ const Perfil = () => {
             }}}
             footerProps={{ guiaAtual: usuarioLogado?.id == perfil?.id ? 'Perfil' : 'Home'}}
         >
-            <Feed feedPerfil={true} perfil={perfil} />
+            <View>
+                {perfil && 
+                <UsuarioInformacoes perfil={perfil}/>
+                }
+                <Feed feedPerfil={true} perfil={perfil} />
+            </View>
         </Container>
     )
 }
