@@ -1,27 +1,39 @@
-import { Text, View } from "react-native"
+import { Text, Touchable, TouchableOpacity, View } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { colors } from "../../../app.json"
 import Avatar from "../Avatar"
 import { IUsuario, IUsuarioData } from "../../_services/UserService/types"
+import styles from "./styles"
 
-const UsuarioInformacoes = (props: {perfil: IUsuarioData}) => {
+const UsuarioInformacoes = (props: {perfil: IUsuarioData, usuarioLogado: IUsuario}) => {
     return (
-        <View>
+        <View style={styles.container}>
             <Avatar imagemComBorda={true} usuario={props.perfil}/>
             <View>
-                <View>
-                    <View>
-                        <Text>{props.perfil.publicacoes}</Text>
-                        <Text>Publicações</Text>
+                <View style={styles.containerNoPerfil}>
+                    <View style={styles.containerInfo}>
+                        <Text style={styles.textNumero}>{props.perfil.publicacoes}</Text>
+                        <Text style={styles.placeHolder}>Publicações</Text>
                     </View>
-                    <View>
-                        <Text>{props.perfil.seguidores}</Text>
-                        <Text>Seguidores</Text>
+                    <View style={[styles.containerInfo, {marginHorizontal: 10}]}>
+                        <Text style={styles.textNumero}>{props.perfil.seguidores}</Text>
+                        <Text style={styles.placeHolder}>Seguidores</Text>
                     </View>
-                    <View>
-                        <Text>{props.perfil.seguindo}</Text>
-                        <Text>Seguindo</Text>
+                    <View style={styles.containerInfo}>
+                        <Text style={styles.textNumero}>{props.perfil.seguindo}</Text>
+                        <Text style={styles.placeHolder}>Seguindo</Text>
                     </View>
+                </View>
+                <View style={[styles.containerInfo, {marginTop: 16}]}>
+                    {props.perfil.id == props.usuarioLogado.id ?
+                    <TouchableOpacity style={styles.botaoContorno}>
+                        <Text style={styles.textBotaoContorno}>Editar Usuario</Text>
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity>
+                        <Text>{props.perfil.segueEsseusuario?"Deixar deseguir" : "Seguir"}</Text>
+                    </TouchableOpacity>
+                    }
                 </View>
             </View>
         </View>

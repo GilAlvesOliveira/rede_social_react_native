@@ -41,6 +41,7 @@ const Perfil = () => {
                     seguidores: perfil.data.seguidores,
                     seguindo: perfil.data.seguindo,
                     publicacoes: perfil.data.publicacoes,
+                    segueEsseusuario: perfil.data.segueEsseUsuario != undefined ? perfil.data.segueEsseUsuario : false
                 }
                 setPerfil(perfilFormatado)
             }
@@ -59,8 +60,8 @@ const Perfil = () => {
             footerProps={{ guiaAtual: usuarioLogado?.id == perfil?.id ? 'Perfil' : 'Home'}}
         >
             <View>
-                {perfil && 
-                <UsuarioInformacoes perfil={perfil}/>
+                {perfil && usuarioLogado &&
+                <UsuarioInformacoes usuarioLogado={usuarioLogado} perfil={perfil}/>
                 }
                 <Feed feedPerfil={true} perfil={perfil} />
             </View>
