@@ -19,6 +19,6 @@ export interface IUsuarioData {
     seguidores: number,
     seguindo: number,
     publicacoes: number,
-    segueEsseusuario: boolean,
+    segueEsseUsuario: boolean,
     index?: number
 }

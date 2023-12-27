@@ -41,7 +41,7 @@ const Perfil = () => {
                     seguidores: perfil.data.seguidores,
                     seguindo: perfil.data.seguindo,
                     publicacoes: perfil.data.publicacoes,
-                    segueEsseusuario: perfil.data.segueEsseUsuario != undefined ? perfil.data.segueEsseUsuario : false
+                    segueEsseUsuario: perfil.data.segueEsseUsuario != undefined ? perfil.data.segueEsseUsuario : false
                 }
                 setPerfil(perfilFormatado)
             }

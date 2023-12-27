@@ -5,5 +5,6 @@ export type RootStackParamList = {
     Cadastro: undefined,
     Home: undefined,
     NovaPublicacao: undefined,
-    Perfil: IUsuarioData | IUsuario | undefined
+    Perfil: IUsuarioData | IUsuario | undefined,
+    EditarPerfil: IUsuarioData | IUsuario
 }

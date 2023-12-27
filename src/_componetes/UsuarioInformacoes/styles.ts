@@ -42,6 +42,19 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: colors.primaryColor,
         fontFamily: 'biennale',
+     },
+     botao: {
+        width: 216,
+        height: 28,
+        backgroundColor: colors.primaryColor,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 4
+     },
+     textBotao: {
+        fontSize: 12,
+        color: colors.whiteColor,
+        fontFamily: 'biennale'
      }
 })
 
