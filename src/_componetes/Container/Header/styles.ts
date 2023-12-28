@@ -48,8 +48,19 @@ const styles = StyleSheet.create({
     },
     textNome: {
         fontFamily: 'biennale-bold'
-    }
-
+    },
+    textCancelar: {
+        color: colors.grayColor03,
+        fontFamily: 'biennale',
+        fontSize: 12,
+        fontWeight: '500'
+    },
+     textConcluir: {
+        color: colors.primaryColor,
+        fontFamily: 'biennale',
+        fontSize: 12,
+        fontWeight: '700'
+     }
 });
 
 export default styles;

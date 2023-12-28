@@ -62,6 +62,23 @@ const Header = (props: IHeader) => {
                 </View>
             </View>
         }
+
+        {
+            props.editarPerfilHeader && 
+            <View style={styles.containerPerfil} >
+                <View style={{marginHorizontal: 18}} >
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Text style={styles.textCancelar} > Cancelar </Text>
+                    </TouchableOpacity>
+                </View>
+                <Text style={styles.textNome} >Editar Perfil </Text>
+                <View>
+                    <TouchableOpacity onPress={() => props.editarPerfilHeader?.submit()} >
+                        <Text style={styles.textConcluir} >Concluir </Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        }
     </View>
    ) 
 }

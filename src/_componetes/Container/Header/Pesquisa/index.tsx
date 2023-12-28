@@ -6,8 +6,14 @@ import { ActivityIndicator } from "react-native";
 import { colors } from  '../../../../../app.json';
 import styles from "./styles";
 import Avatar from "../../../Avatar";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../../../_rotas/RootStackParams";
 
 const Pesquisar = (props: {filtro: string}) => {
+    type navigationTypes = NativeStackNavigationProp<RootStackParamList, 'Home'>
+    const navigation = useNavigation<navigationTypes>()
+
     const[usuarios, setUsuarios] = useState<IUsuarioData[]>([])
     const[estaCarregando, setEstaCarregando] = useState<boolean>(false)
 
@@ -25,7 +31,7 @@ const Pesquisar = (props: {filtro: string}) => {
             const {data} = await UserService.pesquisar(props.filtro)
 
             const usuariosFormatado: IUsuarioData[] = data?.map((usuario: any, index: number) => {
-                const usuarioFormatado: IUsuarioData = {  /*este usuario formatado seria para transformar todos os dados do codigo para exatamente a string que esta na api*/
+                const usuarioFormatado: IUsuarioData = {
                     id: usuario._id,
                     nome: usuario.nome,
                     email: usuario.email,
@@ -33,7 +39,8 @@ const Pesquisar = (props: {filtro: string}) => {
                     seguidores: usuario.seguidores,
                     seguindo: usuario.seguindo,
                     publicacoes: usuario.publicacoes,
-                    index: index
+                    index: index,
+                    segueEsseUsuario: usuario.data.segueEsseUsuario != undefined ? usuario.data.segueEsseUsuario : false
                 }
                 return usuarioFormatado
             })
@@ -47,7 +54,7 @@ const Pesquisar = (props: {filtro: string}) => {
     }, [usuarios])
 
     const renderItem = (usuario: IUsuarioData) => (
-        <TouchableOpacity style={usuario.index && usuario.index % 2 != 0? styles.backgroundImpar : styles.backgroundPar}>
+        <TouchableOpacity onPress={() => navigation.navigate('Perfil', usuario)} style={usuario.index && usuario.index % 2 != 0? styles.backgroundImpar : styles.backgroundPar}>
             <View style={styles.row} >
                 <View>
                     <Avatar usuario={usuario} />

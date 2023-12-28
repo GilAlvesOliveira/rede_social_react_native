@@ -12,6 +12,7 @@ const Container = (props: IContainer) => {
    return (
     <SafeAreaView style={styles.container}>
         <Header
+            editarPerfilHeader={props.headerProps.editarPerfilHeader}
             perfilHeader={props.headerProps.perfilHeader}
             default={props.headerProps.default}
             barraPesquisa={{
