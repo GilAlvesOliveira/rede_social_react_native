@@ -55,7 +55,7 @@ const UsuarioInformacoes = (props: {perfil: IUsuarioData, usuarioLogado: IUsuari
                     </TouchableOpacity>
                     :
                     <TouchableOpacity onPress={() => alternarSeguir()} style={segueEsseUsuario ?  styles.botaoContorno : styles.botao}>
-                        <Text style={segueEsseUsuario ? styles.botaoContorno : styles.textBotao}>{segueEsseUsuario ? "Deixar deseguir" : "Seguir"}</Text>
+                        <Text style={segueEsseUsuario ? styles.textBotaoContorno : styles.textBotao}>{segueEsseUsuario ? "Deixar de seguir" : "Seguir"}</Text>
                     </TouchableOpacity>
                     }
                 </View>

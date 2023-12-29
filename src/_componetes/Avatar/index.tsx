@@ -7,7 +7,7 @@ import styles from "./styles";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../../../app.json"
 
-const Avatar = (props: {imagemComBorda?: boolean, usuario: IUsuarioData | IUsuario}) => {
+const Avatar = (props: {imagemComBorda?: boolean, usuario: IUsuarioData | IUsuario, imagem?: any}) => {
     type navigationTypes = NativeStackNavigationProp<RootStackParamList, 'Home'>
     const navigation = useNavigation<navigationTypes>()
 
@@ -19,9 +19,12 @@ const Avatar = (props: {imagemComBorda?: boolean, usuario: IUsuarioData | IUsuar
                 >
                 <Image 
                     style={styles.imagemUsuarioComBorda}
-                    source={props.usuario.avatar ?
-                    {uri: props.usuario.avatar}
-                    : require('../../_assets/imagens/Avatar.png')} />
+                    source={props.imagem? 
+                        {uri: props.imagem.uri}
+                        :
+                        props.usuario.avatar ?
+                        {uri: props.usuario.avatar}
+                        : require('../../_assets/imagens/Avatar.png')} />
             </LinearGradient>
             :
             <TouchableOpacity onPress={() => {navigation.navigate("Perfil", props.usuario)}} >

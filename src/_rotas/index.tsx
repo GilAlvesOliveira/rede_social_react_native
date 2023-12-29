@@ -4,6 +4,7 @@ import Cadastro from '../_screens/cadastro';
 import Home from '../_screens/Home';
 import Perfil from '../_screens/Perfil';
 import EditarPerfil from '../_screens/EditarPerfil';
+import Publicacao from '../_screens/Publicacao/indes';
 
 const Rotas = () => {
     const Stack/*pilhas*/ = createNativeStackNavigator();
@@ -14,6 +15,7 @@ const Rotas = () => {
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Perfil" component={Perfil} />
             <Stack.Screen name="EditarPerfil" component={EditarPerfil} />
+            <Stack.Screen name="Publicacao" component={Publicacao} />
         </Stack.Navigator>
     )
 }

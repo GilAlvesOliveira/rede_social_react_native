@@ -60,6 +60,12 @@ const styles = StyleSheet.create({
         fontFamily: 'biennale',
         fontSize: 12,
         fontWeight: '700'
+     },
+     textConcluirDesabilitado: {
+        color: colors.grayColor01,
+        fontFamily: 'biennale',
+        fontSize: 12,
+        fontWeight: '700'
      }
 });
 

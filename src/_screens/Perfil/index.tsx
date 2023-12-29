@@ -18,7 +18,9 @@ const Perfil = () => {
     const [perfil, setPerfil] = useState<IUsuarioData>()
 
     useEffect(() => {
-        getPerfil()
+        navigation.addListener('focus', () => {
+            getPerfil()
+        })
     }, [])
 
     const getPerfil = async () => {

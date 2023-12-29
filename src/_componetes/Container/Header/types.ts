@@ -3,6 +3,7 @@ export interface IHeader{
     barraPesquisa?: IBarraPesquisa
     perfilHeader?: IPerfilHeader
     editarPerfilHeader?: IEditarPerfilHeader
+    publicacaoHeader?: IPublicacaoHeader
 }
 
 export interface IBarraPesquisa{
@@ -16,5 +17,11 @@ export interface IPerfilHeader{
 }
 
 export interface IEditarPerfilHeader {
-    submit: () => void
+    submit: () => void,
+    submiHabilitar?: boolean
+}
+
+export interface IPublicacaoHeader {
+    submit: () => void,
+    submiHabilitar?: boolean
 }

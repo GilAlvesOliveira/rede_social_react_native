@@ -27,9 +27,7 @@ const Pesquisar = (props: {filtro: string}) => {
     const buscarUsuario = useCallback(async () => {
         try {
             setEstaCarregando(true)
-            setUsuarios([])
             const {data} = await UserService.pesquisar(props.filtro)
-
             const usuariosFormatado: IUsuarioData[] = data?.map((usuario: any, index: number) => {
                 const usuarioFormatado: IUsuarioData = {
                     id: usuario._id,
@@ -40,7 +38,7 @@ const Pesquisar = (props: {filtro: string}) => {
                     seguindo: usuario.seguindo,
                     publicacoes: usuario.publicacoes,
                     index: index,
-                    segueEsseUsuario: usuario.data.segueEsseUsuario != undefined ? usuario.data.segueEsseUsuario : false
+                    segueEsseUsuario: false
                 }
                 return usuarioFormatado
             })

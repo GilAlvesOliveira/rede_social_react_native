@@ -1,4 +1,4 @@
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Container from "../../_componetes/Container";
 import Avatar from "../../_componetes/Avatar";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import styles from "./styles";
 import * as selecionarImagem from 'expo-image-picker';
-
+import * as UsuarioService from '../../_services/UserService'
 
 const EditarPerfil = () => {
     type navigationTypes = NativeStackNavigationProp<RootStackParamList, 'Perfil'>
@@ -15,7 +15,7 @@ const EditarPerfil = () => {
     const perfil = navigation.getState().routes.find(route => route.name == "EditarPerfil")?.params
 
     const [nome, setNome] = useState<string>('')
-    const [temNome, setTemNome] = useState<boolean>(true)
+    const [temNome, setTemNome] = useState<boolean>(false)
     const [imagem, setImagem] = useState<any>()
 
     const escolherImagem =async () => {
@@ -30,26 +30,52 @@ const EditarPerfil = () => {
         }
     }
 
+    const editarPerfil = async () => {
+        if(imagem || nome) {
+            try{
+                const body = new FormData()
+                if(imagem){
+                    const file: any = {
+                        uri: imagem.uri,
+                        type: `image/${imagem.uri.split('/').pop().split('.').pop()}`,
+                        nome: imagem.uri.split('/').pop()
+                    }
+                    body.append('file', file)
+                    await UsuarioService.update(body)
+                    navigation.goBack()
+                }
+                if(nome){
+                    body.append("nome", nome)
+                }
+            }catch(erro){
+                console.log(erro)
+                Alert.alert("Erro", "Erro ao alterar as informações do usuario")
+            }
+        }
+    }
+
     return (
         <Container 
             headerProps={{ editarPerfilHeader: {
-                submit: () => {}
+                submit: editarPerfil,
+                submiHabilitar: imagem || nome
             }}}
             footerProps={{ guiaAtual: "Perfil"}}    
         >
             <View>
                 {
                     perfil && 
+                    <View>
                         <View style={styles.containerImagem}>
-                            <Avatar usuario={perfil} imagemComBorda={true}/>
+                            <Avatar usuario={perfil} imagem={imagem} imagemComBorda={true}/>
                             <TouchableOpacity onPress={() => escolherImagem()}>
                                 <Text style={styles.textUpdateImage}>Alterar foto de perfil </Text>
                             </TouchableOpacity>
+                        </View>
                         <View>
-
                             <View style={styles.containerEditName}>
                                 <View style={styles.containerRowEditName}>
-                                    <Text style={styles.textName}>Nome </Text>
+                                    <Text style={styles.textName}>Nome: </Text>
                                     {!temNome ? (
                                         <Text style={styles.textNameUser}>{perfil.nome}</Text>
                                     ) : (

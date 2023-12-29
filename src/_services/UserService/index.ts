@@ -12,6 +12,10 @@ const cadastro = async (body: FormData) => {
     await RedeSocialApiService.post('/cadastro', body, {"content-Type": "Multipart/form-data"})
 }
 
+const update = async (body: FormData) => {
+    await RedeSocialApiService.put('/usuario', body, {"content-Type": "Multipart/form-data"})
+}
+
 const atualizarUsuarioAtual = async () => {
     const usuario = await RedeSocialApiService.get('/usuario')
     await AsyncStorage.setItem('nome', usuario.data.nome)
@@ -44,4 +48,4 @@ const alternarSeguir = async (id: string) => {
     return await RedeSocialApiService.put(`/seguir?id=${id}`)
 }
 
-export {login, getUsuarioAtual, cadastro, pesquisar, getPerfil, alternarSeguir}
+export {login, getUsuarioAtual, cadastro, pesquisar, getPerfil, alternarSeguir, update}
