@@ -16,4 +16,8 @@ const enviarComentario =async (postId: string, menssagem: string) => {
     return await RedeSocialApiService.put(`/comentario?id=${postId}`, {"comentario": menssagem})
 }
 
-export {getPosts, alternarCurtida, enviarComentario}
+const enviarPublicacao = async (body: FormData) => {
+    await RedeSocialApiService.post('/publicacao', body, {"content-Type": "multipart/form-data"})
+}
+
+export {getPosts, alternarCurtida, enviarComentario, enviarPublicacao}

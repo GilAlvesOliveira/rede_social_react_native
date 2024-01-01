@@ -89,7 +89,7 @@ const Header = (props: IHeader) => {
                 </View>
                 <Text style={styles.textNome} >Nova Publicação </Text>
                 <View>
-                    <TouchableOpacity onPress={() => props.editarPerfilHeader?.submiHabilitar && props.editarPerfilHeader?.submit()} >
+                    <TouchableOpacity onPress={() => props.publicacaoHeader?.submiHabilitar && props.publicacaoHeader?.submit()} >
                         <Text style={props.publicacaoHeader.submiHabilitar ? styles.textConcluir : styles.textConcluirDesabilitado} >Compartilhar </Text>
                     </TouchableOpacity>
                 </View>

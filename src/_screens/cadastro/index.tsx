@@ -39,15 +39,15 @@ const Cadastro = () => {
       }
       body.append("file", file)
     }
-    await UserService.cadastro(body).catch((erro) => {
-      return
-    })
+    await UserService.cadastro(body)
     await UserService.login({login: email, senha: senha})
     setLoading(false)
     navigation.navigate('Home')  /*navigation.navigate('') é a rora para onde vai ir a pagina*/
   } catch(error: any){
     setErro('Erro ao efetuar o cadastro, tente novamnete.')
     setLoading(false)
+    console.log('teste123', error);
+    
   }
 }
 

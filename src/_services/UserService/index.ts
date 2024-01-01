@@ -9,11 +9,11 @@ const login = async (body: ILogin) => {
 }
 
 const cadastro = async (body: FormData) => {
-    await RedeSocialApiService.post('/cadastro', body, {"content-Type": "Multipart/form-data"})
+    await RedeSocialApiService.post('/cadastro', body, {"content-Type": "multipart/form-data"})
 }
 
 const update = async (body: FormData) => {
-    await RedeSocialApiService.put('/usuario', body, {"content-Type": "Multipart/form-data"})
+    await RedeSocialApiService.put('/usuario', body, {"content-Type": "multipart/form-data"})
 }
 
 const atualizarUsuarioAtual = async () => {

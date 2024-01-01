@@ -18,7 +18,7 @@ const EditarPerfil = () => {
     const [temNome, setTemNome] = useState<boolean>(false)
     const [imagem, setImagem] = useState<any>()
 
-    const escolherImagem =async () => {
+    const escolherImagem = async () => {
         const resultado = await selecionarImagem.launchImageLibraryAsync({    /*launchCameraAsync abre a camera*/
             mediaTypes: selecionarImagem.MediaTypeOptions.Images,       /*mediatype seria o tipo do arquivo, imagem ou video*/
             allowsEditing: true,                                        /*aqui seria para editar a imagem depois*/
@@ -47,8 +47,8 @@ const EditarPerfil = () => {
                 if(nome){
                     body.append("nome", nome)
                 }
-            }catch(erro){
-                console.log(erro)
+            }catch(erro: any){
+                console.log('teste',erro)
                 Alert.alert("Erro", "Erro ao alterar as informações do usuario")
             }
         }
