@@ -48,4 +48,4 @@ const alternarSeguir = async (id: string) => {
     return await RedeSocialApiService.put(`/seguir?id=${id}`)
 }
 
-export {login, getUsuarioAtual, cadastro, pesquisar, getPerfil, alternarSeguir, update}
+export {login, getUsuarioAtual, atualizarUsuarioAtual, cadastro, pesquisar, getPerfil, alternarSeguir, update}
