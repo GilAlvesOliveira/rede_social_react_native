@@ -37,16 +37,16 @@ const EditarPerfil = () => {
                 if(imagem){
                     const file: any = {
                         uri: imagem.uri,
-                        type: `image/${imagem.uri.split('/').pop().split('.').pop()}`,
+                        type: `imagem/${imagem.uri.split('/').pop().split('.').pop()}`,
                         nome: imagem.uri.split('/').pop()
                     }
                     body.append('file', file)
-                    await UsuarioService.update(body)
-                    navigation.goBack()
                 }
                 if(nome){
                     body.append("nome", nome)
                 }
+                await UsuarioService.update(body)
+                navigation.goBack()
             }catch(erro: any){
                 console.log('teste',erro)
                 Alert.alert("Erro", "Erro ao alterar as informações do usuario")
