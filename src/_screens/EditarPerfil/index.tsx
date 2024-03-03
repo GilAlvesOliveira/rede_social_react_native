@@ -19,14 +19,17 @@ const EditarPerfil = () => {
     const [imagem, setImagem] = useState<any>()
 
     const escolherImagem = async () => {
-        const resultado = await selecionarImagem.launchImageLibraryAsync({    /*launchCameraAsync abre a camera*/
-            mediaTypes: selecionarImagem.MediaTypeOptions.Images,       /*mediatype seria o tipo do arquivo, imagem ou video*/
-            allowsEditing: true,                                        /*aqui seria para editar a imagem depois*/
+        const resultado = await selecionarImagem.launchImageLibraryAsync({
+            mediaTypes: selecionarImagem.MediaTypeOptions.Images,
+            allowsEditing: true,
             aspect: [4, 3],
             quality: 1
-        })
-        if(!resultado.canceled){
-            setImagem(resultado)
+        });
+    
+        if (!resultado.canceled) {
+            const selectedImage = resultado.assets[0]; // Acessar o primeiro ativo selecionado
+            setImagem(selectedImage);
+            console.log('Resultado', selectedImage);
         }
     }
 

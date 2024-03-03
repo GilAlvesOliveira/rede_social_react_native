@@ -24,7 +24,7 @@ const Cadastro = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const [confirmarSenha, setConfirmarSenha] = useState<string>('')
 
-  const efetuarCadastro = async () => {  /*para efetuar o login*/
+  const efetuarCadastro = async () => {  /*para efetuar o cadastro*/
   try{
     setLoading(true)
     const body = new FormData()
@@ -35,7 +35,7 @@ const Cadastro = () => {
       const file: any = {
         uri: imagem.uri,
         type: `imagem/${imagem.uri?.split('/').pop().split('.').pop()}`,
-        nome: imagem.uri.split('/').pop()
+        name: imagem.uri.split('/').pop()
       }
       body.append("file", file)
     }

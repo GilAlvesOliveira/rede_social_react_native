@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         fontFamily: "biennale-bold"
      },
      placeHolder: {
-        font: 12,
+        fontSize: 12,
         color: Colors.grayColor04,
         fontFamily: "biennale"
      },
