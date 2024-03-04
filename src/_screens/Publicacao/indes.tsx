@@ -34,13 +34,13 @@ const Publicacao = () => {
             console.log('Resultado', selectedImage);
         }
     }
-
     const enviar = async () => {
-        if(imagem || descricao) {
-            try{
+        if (imagem || descricao) {
+            try {
                 setLoading(true)
                 const body = new FormData()
-                if(imagem) {
+    
+                if (imagem) {
                     const file: any = {
                         uri: imagem.uri,
                         type: `imagem/${imagem.uri?.split('/').pop().split('.').pop()}`,
@@ -48,16 +48,18 @@ const Publicacao = () => {
                     }
                     body.append("file", file)
                     console.log('Enviando Publicação', body)
-                    await FeedService.enviarPublicacao(body)
-                    navigation.navigate('Home')
-                    setLoading(false)
-                    
                 }
-                if(descricao){
+    
+                if (descricao) {
                     body.append("descricao", descricao)
                 }
-            }catch(erro: any){
-                console.log('teste',erro)
+    
+                await FeedService.enviarPublicacao(body)
+                navigation.navigate('Home')
+                setLoading(false)
+    
+            } catch (erro: any) {
+                console.log('teste', erro)
                 Alert.alert("Erro", "Erro ao enviar publicacao")
                 setLoading(false)
             }
