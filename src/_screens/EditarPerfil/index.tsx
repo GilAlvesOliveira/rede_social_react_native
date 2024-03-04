@@ -41,7 +41,7 @@ const EditarPerfil = () => {
                     const file: any = {
                         uri: imagem.uri,
                         type: `imagem/${imagem.uri.split('/').pop().split('.').pop()}`,
-                        nome: imagem.uri.split('/').pop()
+                        name: imagem.uri.split('/').pop()                              // Correção: utilize 'name' em vez de 'nome'
                     }
                     body.append('file', file)
                 }
@@ -104,4 +104,6 @@ const EditarPerfil = () => {
     )
 }
 
-export default EditarPerfil
+export default EditarPerfil;
+
+
