@@ -13,7 +13,8 @@ const Publicacao = () => {
     const navigation = useNavigation<navigationTypes>()
 
     const [descricao, setDescricao] = useState<string>('')
-    const [ imagem, setImagem] = useState<any>()
+    const [ imagem, setImagem] = useState<any>(null)
+    const [loading, setLoading] = useState<boolean>(false)
 
     useEffect(() => {
         escolherImagem()
@@ -37,16 +38,20 @@ const Publicacao = () => {
     const enviar = async () => {
         if(imagem || descricao) {
             try{
+                setLoading(true)
                 const body = new FormData()
-                if(imagem){
+                if(imagem) {
                     const file: any = {
                         uri: imagem.uri,
-                        type: `image/${imagem.uri.split('/').pop().split('.').pop()}`,
-                        nome: imagem.uri.split('/').pop()
+                        type: `imagem/${imagem.uri?.split('/').pop().split('.').pop()}`,
+                        name: imagem.uri.split('/').pop()
                     }
-                    body.append('file', file)
+                    body.append("file", file)
+                    console.log('Enviando Publicação', body)
                     await FeedService.enviarPublicacao(body)
                     navigation.navigate('Home')
+                    setLoading(false)
+                    
                 }
                 if(descricao){
                     body.append("descricao", descricao)
@@ -54,6 +59,7 @@ const Publicacao = () => {
             }catch(erro: any){
                 console.log('teste',erro)
                 Alert.alert("Erro", "Erro ao enviar publicacao")
+                setLoading(false)
             }
         }
     }
@@ -74,10 +80,10 @@ const Publicacao = () => {
                 <TextInput
                     placeholder="Escreva uma legenda..."
                     multiline={true}
-                   onChangeText={value => setDescricao(value)}
-                   value={descricao}
-                   autoCapitalize="none"
-                   style={styles.descricao}
+                    onChangeText={value => setDescricao(value)}
+                    value={descricao}
+                    autoCapitalize="none"
+                    style={styles.descricao}
                 />
             </View>
         </Container>

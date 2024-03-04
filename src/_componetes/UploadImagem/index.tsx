@@ -2,7 +2,6 @@ import { Image, TouchableOpacity, View} from "react-native";
 import * as selecionarImagem from 'expo-image-picker';
 import styles from "./styles";
 
-
 const UploadImagem = (props: {
     setImagem: (imagem: any) => void, // Altere o tipo esperado para 'any' ou outro tipo apropriado
     imagem: any
@@ -16,9 +15,9 @@ const UploadImagem = (props: {
             quality: 1
         })
         if (!resultado.canceled) {
-            const selectedImage = resultado.assets[0]; // Acessar o primeiro ativo selecionado
+            const selectedImage = resultado.assets[0];           // Acessar o primeiro ativo selecionado
             const imagemParaSalvar = { uri: selectedImage.uri }; // Criar um novo objeto com a chave 'uri'
-            props.setImagem(imagemParaSalvar); // Passar o novo objeto para setImagem
+            props.setImagem(imagemParaSalvar);                   // Passar o novo objeto para setImagem
         }
     }
 
