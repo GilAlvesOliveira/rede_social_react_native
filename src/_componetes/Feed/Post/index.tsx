@@ -1,4 +1,4 @@
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Text, TouchableOpacity, View, Modal  } from "react-native";
 import { IPost } from "./types";
 import styles from "./styles";
 import { useEffect, useState } from "react";
@@ -16,6 +16,7 @@ const Post = (props: {post: IPost}) => {
     const [comentarioInputAtivo, setComentarioInputAtivo] = useState<boolean>(false)
     const [numeroDeLinhas, setNumeroDeLinhas] = useState<number | undefined>(2)
     const [usuarioLogado, setUsuarioLogado] = useState<IUsuario>()
+    const [exibirExcluir, setExibirExcluir] = useState(false);
 
     useEffect(() => {
         verificarCurtida()
@@ -52,15 +53,35 @@ const Post = (props: {post: IPost}) => {
         }
     }
 
+    const abrirModalExclusao = () => {
+        setExibirExcluir(true);
+    }
+
 
     return (
         <View style={styles.container}>
             <View style={styles.containerUsuario}>
                 <Avatar usuario={props.post.usuario} />
                 <Text style={styles.textUsuarioNome} >{props.post.usuario.nome}</Text>
+                <TouchableOpacity onPress={abrirModalExclusao} >
+                    <Image style={styles.editarExcluir} source={require('../../../_assets/imagens/botao.exluir.png')}/>
+                </TouchableOpacity>
             </View>
+            <Modal visible={exibirExcluir} animationType="slide" transparent={true}>
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <Text>Deseja realmente excluir este post?</Text>
+                            <TouchableOpacity onPress={() => {/* Lógica para excluir o post */ /*setExibirExcluir */(false);}}>
+                                <Text>Confirmar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setExibirExcluir(false)}>
+                                <Text>Cancelar</Text>
+                            </TouchableOpacity>
+                     </View>
+                 </View>
+            </Modal>
             <View>
-                <Image style={styles.postImagem} source={{uri: props.post.imagem}} />
+                <Image style={styles.postImagem} source={{uri: props.post.imagem} } />
             </View>
 
             <View style={styles.containerCurtidoEComentario}>
@@ -105,4 +126,4 @@ const Post = (props: {post: IPost}) => {
     )
 }
 
-export default Post
+export default Post;
