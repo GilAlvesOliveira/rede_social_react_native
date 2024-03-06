@@ -63,9 +63,11 @@ const Post = (props: {post: IPost}) => {
             <View style={styles.containerUsuario}>
                 <Avatar usuario={props.post.usuario} />
                 <Text style={styles.textUsuarioNome} >{props.post.usuario.nome}</Text>
-                <TouchableOpacity onPress={abrirModalExclusao} >
-                    <Image style={styles.editarExcluir} source={require('../../../_assets/imagens/botao.exluir.png')}/>
-                </TouchableOpacity>
+                    <TouchableOpacity onPress={abrirModalExclusao}>
+                        {usuarioLogado && props.post.usuario.id === usuarioLogado.id && (
+                            <Image style={styles.editarExcluir} source={require('../../../_assets/imagens/botao.exluir.png')} />
+                        )}
+                    </TouchableOpacity>
             </View>
             <Modal visible={exibirExcluir} animationType="slide" transparent={true}>
                 <View style={styles.modalContainer}>
