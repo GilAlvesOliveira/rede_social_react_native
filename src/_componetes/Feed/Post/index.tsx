@@ -80,22 +80,24 @@ const Post = (props: {post: IPost, updatePosts: () => void}) => {
                 <Text style={styles.textUsuarioNome} >{props.post.usuario.nome}</Text>
                     <TouchableOpacity onPress={abrirModalExclusao}>
                         {usuarioLogado && props.post.usuario.id === usuarioLogado.id && (
-                            <Image style={styles.editarExcluir} source={require('../../../_assets/imagens/botao.exluir.png')} />
+                            <Image style={styles.botaoExcluir} source={require('../../../_assets/imagens/botao.exluir.jpg')} />
                         )}
                     </TouchableOpacity>
             </View>
             <Modal visible={exibirExcluir} animationType="slide" transparent={true}>
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
-                        <Text>Deseja realmente excluir este post?</Text>
-                            <TouchableOpacity onPress={() => excluirPost(props.post.id)}>
+                        <Text style={styles.modalHeaderText}>Deseja realmente excluir este post?</Text>
+                        <View style={styles.modalButtons}>
+                            <TouchableOpacity style={[styles.modalButton, styles.confirmButton]} onPress={() => excluirPost(props.post.id)}>
                                 <Text>Confirmar</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setExibirExcluir(false)}>
+                            <TouchableOpacity style={[styles.modalButton, styles.cancelButton]} onPress={() => setExibirExcluir(false)}>
                                 <Text>Cancelar</Text>
                             </TouchableOpacity>
-                     </View>
-                 </View>
+                        </View>
+                    </View>
+                </View>
             </Modal>
             <View>
                 <Image style={styles.postImagem} source={{uri: props.post.imagem} } />

@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         color: colors.grayColor04
     },
-    editarExcluir: {
-        width: 25,
-        height: 25,
+    botaoExcluir: {
+        width: 30,
+        height: 30,
         marginLeft: 250
     },
     modalContainer: {
@@ -82,6 +82,27 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
         alignItems: 'center',
+    },
+    modalHeaderText: {
+        fontFamily: 'biennale-bold',
+        fontSize: 14,
+        marginBottom: 20,
+        color: colors.grayColor04,
+    },
+    modalButtons: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '70%',
+    },
+    modalButton: {
+        padding: 10,
+        borderRadius: 5,
+    },
+    confirmButton: {
+        backgroundColor: colors.MediumSpringGreen,
+    },
+    cancelButton: {
+        backgroundColor: colors.redColor
     }
 })
 
