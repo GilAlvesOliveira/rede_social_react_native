@@ -20,4 +20,11 @@ const enviarPublicacao = async (body: FormData) => {
     await RedeSocialApiService.post('/publicacao', body, {"content-Type": "multipart/form-data"})
 }
 
-export {getPosts, alternarCurtida, enviarComentario, enviarPublicacao}
+
+const excluirPost = async (postId: string) => {
+    const url = `/publicacao?postId=${postId}`;
+    console.log("URL da requisição DELETE:", url);
+    return await RedeSocialApiService.deletar(url);
+}
+
+export {getPosts, alternarCurtida, enviarComentario, enviarPublicacao, excluirPost};

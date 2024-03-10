@@ -36,5 +36,8 @@ const put = async (url: string, data?: any, headers?: any) => {
 const get = async (url: string, headers?: any) => {
     return api(url, "GET", headers)
 }
+const deletar = async (url: string, headers?: any) => {
+    return api(url, "DELETE", headers)
+}
 
-export {post, get, put}
+export {post, get, put, deletar};

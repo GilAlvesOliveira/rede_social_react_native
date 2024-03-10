@@ -62,13 +62,19 @@ const Feed = (props: {feedPerfil?: boolean, perfil?: IUsuarioData}) => {
             }
         }
     }
+
+    const atualizarPostagens = () => {
+        loadPosts(); // Atualize as postagens após a exclusão
+      }
         
     return (
         <View>
             <FlatList 
                 data={posts}
                 keyExtractor={item => item.id.toString()}
-                renderItem={({item}) => (<Post post={item}/>)}
+                renderItem={({item}) => (
+          <Post post={item} updatePosts={atualizarPostagens} /> // Passe a função para atualizar as postagens
+        )}
                 ListFooterComponent={() => (
                     estaCarregando ?
                         <View>
@@ -82,4 +88,4 @@ const Feed = (props: {feedPerfil?: boolean, perfil?: IUsuarioData}) => {
     )
 }
 
-export default Feed
+export default Feed;

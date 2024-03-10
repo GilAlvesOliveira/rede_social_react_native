@@ -7,9 +7,10 @@ import { IUsuario } from "../../../_services/UserService/types";
 import Comentario from "../Comentarios";
 import Avatar from "../../Avatar";
 import * as FeedService from '../../../_services/FeedService'
+import * as RedeSocialApiService from '../../../../src/_services/RedeSocialApiService';
 
 
-const Post = (props: {post: IPost}) => {
+const Post = (props: {post: IPost, updatePosts: () => void}) => {
     const [curtido, setCurtido] = useState<boolean>(false)
     const [curtidas, setCurtidas] = useState<number>(props.post.likes.length)
     const [comentado, setComentado] = useState<boolean>(false)
@@ -57,6 +58,20 @@ const Post = (props: {post: IPost}) => {
         setExibirExcluir(true);
     }
 
+    const excluirPost = async (postId: string) => {
+        const url = `/publicacao?postId=${postId}`;
+        console.log("URL da requisição DELETE:", url);
+        try {
+          await RedeSocialApiService.deletar(url);
+          console.log("Publicação excluída com sucesso.");
+          setExibirExcluir(false); // Feche o modal após a exclusão bem-sucedida
+          props.updatePosts(); // Atualize os dados das postagens
+    
+        } catch (erro) {
+          console.log(erro);
+          throw erro;
+        }
+      }
 
     return (
         <View style={styles.container}>
@@ -73,7 +88,7 @@ const Post = (props: {post: IPost}) => {
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <Text>Deseja realmente excluir este post?</Text>
-                            <TouchableOpacity onPress={() => {/* Lógica para excluir o post */ /*setExibirExcluir */(false);}}>
+                            <TouchableOpacity onPress={() => excluirPost(props.post.id)}>
                                 <Text>Confirmar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setExibirExcluir(false)}>
