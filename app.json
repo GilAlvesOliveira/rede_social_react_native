@@ -36,7 +36,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.gildevdevdev.rede_social_react_native"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -48,6 +52,11 @@
           "photosPermission": "O aplicativo RedeSocial, deseja ter acesso a galeria do seu dispositivo."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7ed5ed52-fac9-4317-b010-bf52c17de317"
+      }
+    }
   }
 }
