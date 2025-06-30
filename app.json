@@ -19,10 +19,10 @@
     "slug": "rede_social_react_native",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.jpeg",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icon.jpeg",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -34,7 +34,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.jpeg",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
@@ -43,7 +43,7 @@
       "package": "com.gildevdevdev.rede_social_react_native"
     },
     "web": {
-      "favicon": "./assets/favicon.jpeg"
+      "favicon": "./assets/favicon.png"
     },
     "plugins": [
       [
@@ -55,7 +55,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "7ed5ed52-fac9-4317-b010-bf52c17de317"
+        "projectId": "ef19d925-22e1-41c9-aa59-68f94aa5a31f"
       }
     }
   }
