@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "515719495995",
+    "project_id": "redesocial-insta",
+    "storage_bucket": "redesocial-insta.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515719495995:android:d0acb68a28f26b8221f71e",
+        "android_client_info": {
+          "package_name": "com.gilmar.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzCeXwY47sahRi9lVUZV4M9lPn7VIjI2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

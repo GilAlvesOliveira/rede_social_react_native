@@ -1,19 +1,4 @@
 {
-  "colors": {
-    "primaryColor": "#5E49FF",
-    "greenColor": "#3BD42D",
-    "greenWaterColor": "#25CBD3",
-    "MediumSpringGreen": "#00FA9A",
-    "lightBlueColor": "#F0F5FF",
-    "whiteColor": "#FFFFFF",
-    "grayColor00": "#F4F4F4",
-    "grayColor01": "#DADADA",
-    "grayColor02": "#7C7786",
-    "grayColor03": "#4D4C4D",
-    "grayColor04": "#333333",
-    "grayColor05": "#E5E5E5",
-    "redColor": "#DC143C"
-  },
   "expo": {
     "name": "rede_social_react_native",
     "slug": "rede_social_react_native",
@@ -25,6 +10,21 @@
       "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "colors": {
+      "primaryColor": "#5E49FF",
+      "greenColor": "#3BD42D",
+      "greenWaterColor": "#25CBD3",
+      "MediumSpringGreen": "#00FA9A",
+      "lightBlueColor": "#F0F5FF",
+      "whiteColor": "#FFFFFF",
+      "grayColor00": "#F4F4F4",
+      "grayColor01": "#DADADA",
+      "grayColor02": "#7C7786",
+      "grayColor03": "#4D4C4D",
+      "grayColor04": "#333333",
+      "grayColor05": "#E5E5E5",
+      "redColor": "#DC143C"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -57,6 +57,7 @@
       "eas": {
         "projectId": "ef19d925-22e1-41c9-aa59-68f94aa5a31f"
       }
-    }
+    },
+    "owner": "gildevdevdev"
   }
 }
